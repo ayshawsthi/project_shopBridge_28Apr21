@@ -1,3 +1,21 @@
 button .material-icons{
     margin-bottom: 10px;
 }
+
+.listing.ng-enter, .listing.ng-move{
+    transition: 0.4s all;
+    opacity: 0;
+}
+
+.listing.ng-enter.ng-enter-active, .listing.ng-move.ng-move-active{
+    opacity: 1;
+}
+
+.listing.ng-leave {
+    animation: 0.4s fade_listing
+}
+
+@keyframes fade_listing {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

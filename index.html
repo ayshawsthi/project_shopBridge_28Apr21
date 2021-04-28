@@ -80,7 +80,7 @@
         </md-sidenav>
 
         <md-content class="md-padding" layout="row" layout-wrap>
-            <md-card flex="30" dir-paginate = "listing in listings | itemsPerPage:6 | filter:listingFilter | filter:category">
+            <md-card class="listing" flex="30" dir-paginate = "listing in listings | itemsPerPage:6 | filter:listingFilter | filter:category">
                 <img ng-src="{{listing.image}}" alt="">
                 <md-card-content>
                     <div class="classified-info" ng-show = "!showContact">
