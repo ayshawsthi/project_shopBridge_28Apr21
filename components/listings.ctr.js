@@ -9,6 +9,9 @@
             // Using eCommerceFactory service for making this API call reusable and can be altered as required in diff components
             eCommerceFactory.getListings().then(function(listings){
                 $scope.listings = listings.data;
+
+                //For giving the dropdown to filter according to the category
+                $scope.categories = getCategories($scope.listings);
             });
 
             // Faking contact details for the user adding the listing
@@ -17,6 +20,8 @@
                 phone : "+ 91 9123567435",
                 email: "victorHugh@email.com"
             }
+
+
 
             $scope.openSidebar = function(){
                 $mdSidenav('left').open();
@@ -64,10 +69,6 @@
                 }, function(){
 
                 });
-
-                
-                if(confirm('Are you sure ?')){
-                }
             }
 
 
@@ -78,6 +79,20 @@
                             .position('bottom, right')
                             .hideDelay(4000)
                 );
+            }
+
+            function getCategories(listings){
+
+                var categories = [];
+
+                // Angular built-in helper which let us iterate over arrays
+                angular.forEach(listings, function(item){
+                    angular.forEach(item.categories, function(category){
+                        categories.push(category)
+                    });
+                });
+                return _.uniq(categories);
+
             }
 
 

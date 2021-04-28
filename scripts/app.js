@@ -4,8 +4,4 @@ angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination"
                                 .primaryPalette('indigo')
                                 .accentPalette('orange');
         })
-        .directive("helloWorld", function(){
-            return{
-                template:"<h1>{{message}}</h1>"
-            }
-        });
+       
