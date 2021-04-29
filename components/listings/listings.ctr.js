@@ -3,13 +3,12 @@
     "use strict";
     // only a reference to module, creation is already done.
     angular.module("eCommerce")
-           .controller("eCommerceCtrl",function(eCommerceFactory,$mdSidenav,$mdToast,$mdDialog){
+           .controller("eCommerceCtrl",function($scope, eCommerceFactory, $state, $mdSidenav, $mdToast, $mdDialog){
             
             var vm =this;
             
             vm.openSidebar = openSidebar;
             vm.closeSidebar = closeSidebar;
-            vm.saveListing = saveListing;
             vm.saveEditListing = saveEditListing;
             vm.editListing = editListing;
             vm.deleteListing = deleteListing;
@@ -28,32 +27,19 @@
                 vm.categories = getCategories(vm.listings);
             });
 
-            // Faking contact details for the user adding the listing
-            var contact = {
-                name: "Victor Hugh",
-                phone : "+ 91 9123567435",
-                email: "victorHugh@email.com"
-            }
-
-
+            // Getting the data from child controller
+            $scope.$on('newListing', function(event, listing){
+                listing.id = vm.listings.length + 1;
+                vm.listings.push(listing);
+                showToast('Classified Saved!');
+            });
 
             function openSidebar(){
-                $mdSidenav('left').open();
+                $state.go('listings.new');
             }
 
             function closeSidebar(){
                 $mdSidenav('left').close();
-            }
-
-            function saveListing(listing){
-                if(listing){
-                    listing.contact = contact;
-                    // here 'listing is what user inputs'
-                    vm.listings.push(listing);
-                    vm.listing = {};
-                    closeSidebar();   
-                    showToast("Listing Saved!");
-                }
             }
 
             function saveEditListing(){
