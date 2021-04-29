@@ -176,20 +176,19 @@
       },
       {
         "id":"11",
-        "title":"2008 Dodge Caliber",
-        "description":"Battery blanket and block heater installed. Winter tires, good tread left are on the car currently. Car comes with 4 summer tires with also good treads left. Hydraulic power steering fluid line installed so this won't break on you in the cold Yellowknife winters! Synthetic oil used, good for 1000+ more KMs. AC/Sunroof/power doors/steering, CD player/radio. Red accented dash and upolstry.",
-        "price":4800,
-        "posted":"2015-11-03",
-        "contact": {
-          "name":"John Doe",
-          "phone":"(555) 555-5555",
-          "email":"johndoe@gmail.com"
-        },
-        "categories":[
-          "Vehicles",
-          "Cars"
-        ],
-        "image":"http://images.buysellsearch.com/image/orig/8dfc4f6c5d411130d19dedd28d61bc2b/2009-dodge-caliber-se.jpg",
-        "views":423
+        "title":"Baby Crib and Matress",
+      "description":"Good condition.",
+      "price":50,
+      "posted":"2015-10-27",
+      "contact": {
+        "name":"Jane Doe",
+        "phone":"(555) 555-5555",
+        "email":"janedoe@gmail.com"
+      },
+      "categories":[
+        "Furniture"
+      ],
+      "image":"http://images.landofnod.com/is/image/LandOfNod/Crib_Anderson_Nat_V1/$web_setitem$/1308310657/andersen-crib-maple.jpg",
+      "views":23
       }
   ]

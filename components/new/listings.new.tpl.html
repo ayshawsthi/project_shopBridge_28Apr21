@@ -11,21 +11,21 @@
                 <input type="text" id="title"
                        ng-model="listing.title"         
                        md-autofocus name = "title" required="">
-                <div ng-if="newForm.title.$touched" ng-messages="required">Please enter a Title.</div>
+                <div ng-if="newForm.title.$touched && newForm.title.$invalid" ng-messages="required">Please enter a Title.</div>
             </md-input-container>
             <md-input-container>
                 <label for="price">Price</label>
                 <input type="number"
                        id="price"
                        ng-model="listing.price" name = "price" required="">
-                <div ng-if="newForm.price.$touched" ng-messages="required">Please enter a Price.</div>
+                <div ng-if="newForm.price.$touched && newForm.price.$invalid" ng-messages="required">Please enter a Price.</div>
             </md-input-container>
             <md-input-container>
                 <label for="description">Description</label>
                 <input type="text" 
                        id="description"
                        ng-model="listing.description" name = "description" required="">
-                <div ng-if="newForm.description.$touched" ng-messages="required">Please enter a Description.</div>
+                <div ng-if="newForm.description.$touched && newForm.description.$invalid" ng-messages="required">Please enter a Description.</div>
             </md-input-container>
             <md-input-container>
                 <label for="image">Image Link</label>
