@@ -1,10 +1,10 @@
-angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination","ui.router"])
+angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination","ui.router","ngMessages"])
        .config(function($mdThemingProvider, $stateProvider){
             $mdThemingProvider.theme('default')
                                 .primaryPalette('indigo')
                                 .accentPalette('orange');
 
-            // Defining states
+            // Defining states for listing, newListings, editListings
 
             $stateProvider
                 .state('listings',{
@@ -16,6 +16,14 @@ angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination"
                     url:'/new',
                     templateUrl: 'components/new/listings.new.tpl.html',
                     controller: 'newListingsCtrl as vm'
+                })
+                .state('listings.edit',{
+                    url:'/edit/:id',
+                    templateUrl: 'components/edit/listings.edit.tpl.html',
+                    controller: 'editListingsCtrl as vm',
+                    params: {
+                        listing: null
+                    }
                 })
         })
        

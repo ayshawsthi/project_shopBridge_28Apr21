@@ -9,14 +9,11 @@
             
             vm.openSidebar = openSidebar;
             vm.closeSidebar = closeSidebar;
-            vm.saveEditListing = saveEditListing;
             vm.editListing = editListing;
             vm.deleteListing = deleteListing;
 
             vm.listings;
             vm.categories;
-            vm.editing;
-
 
             // Fake API call from a local JSON for handling asynchronus calls in JavaScript through Promises
             // Using eCommerceFactory service for making this API call reusable and can be altered as required in diff components
@@ -27,11 +24,16 @@
                 vm.categories = getCategories(vm.listings);
             });
 
-            // Getting the data from child controller
+            // Getting the data from child controller i.e listings.new.tpl.html
             $scope.$on('newListing', function(event, listing){
                 listing.id = vm.listings.length + 1;
                 vm.listings.push(listing);
-                showToast('Classified Saved!');
+                showToast('Listing Saved!');
+            });
+
+            // Getting the data from child controller i.e listings.edit.tpl.html
+            $scope.$on('editSaved', function(event, message){
+                showToast(message);
             });
 
             function openSidebar(){
@@ -42,18 +44,13 @@
                 $mdSidenav('left').close();
             }
 
-            function saveEditListing(){
-                vm.editing = false;
-                $vm.listing = {};
-                closeSidebar();
-                showToast("Listing Edited!");
-            }
-
             // Here 'listing' is for fetching current data in form, kept same to be generic
             function editListing(listing){
-                vm.editing = true;
-                openSidebar();
-                vm.listing = listing;
+                // Passing routeParams
+                $state.go('listings.edit',{
+                    id : listing.id,
+                    listing : listing
+                });
             }
 
             function deleteListing(listing, event){

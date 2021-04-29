@@ -2,37 +2,35 @@
 
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-open = "vm.sidenavOpen">
     <md-toolbar>
-        <h1 class="md-toolbar-tools">Add a classified</h1>
+        <h1 class="md-toolbar-tools">Add a listing</h1>
     </md-toolbar>
     <md-content layout-padding>
-        <form>
+        <form name = "newForm" novalidate>
             <md-input-container>
                 <label for="title">Title</label>
                 <input type="text" id="title"
                        ng-model="listing.title"         
-                       md-autofocus>
+                       md-autofocus required="">
             </md-input-container>
             <md-input-container>
                 <label for="price">Price</label>
-                <input type="text"
+                <input type="number"
                        id="price"
-                       ng-model="listing.price">
+                       ng-model="listing.price" required="">
             </md-input-container>
             <md-input-container>
                 <label for="description">Description</label>
                 <input type="text" 
                        id="description"
-                       ng-model="listing.description">
+                       ng-model="listing.description" required="">
             </md-input-container>
             <md-input-container>
                 <label for="image">Image Link</label>
                 <input type="text" 
                        id="image"
-                       ng-model="listing.image"         
-                       >
+                       ng-model="listing.image">
             </md-input-container>
-            <md-button ng-if = "!editing" class="md-primary" ng-click="vm.saveListing(listing)">Save</md-button>
-            <md-button ng-if = "editing" class="md-primary" ng-click="vm.saveEditListing()">Save Edit</md-button>
+            <md-button type = "submit" class="md-primary" ng-click="vm.saveListing(listing)" ng-disabled = "newForm.$invalid">Save</md-button>
             <md-button class="md-warn" ng-click="vm.closeSidebar()">Cancel</md-button>
         </form>
     </md-content>

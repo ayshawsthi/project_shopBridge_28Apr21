@@ -1,0 +1,37 @@
+<!-- When we click on a new state, this view gets rendered for sideBar -->
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-open = "vm.sidenavOpen">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Edit Listing</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+        <form name="editForm">
+            <md-input-container>
+                <label for="title">Title</label>
+                <input type="text" id="title"
+                       ng-model="vm.listing.title"         
+                       md-autofocus required>
+            </md-input-container>
+            <md-input-container>
+                <label for="price">Price</label>
+                <input type="text"
+                       id="price"
+                       ng-model="vm.listing.price" required>
+            </md-input-container>
+            <md-input-container>
+                <label for="description">Description</label>
+                <input type="text" 
+                       id="description"
+                       ng-model="vm.listing.description" required>
+            </md-input-container>
+            <md-input-container>
+                <label for="image">Image Link</label>
+                <input type="text" 
+                       id="image"
+                       ng-model="vm.listing.image">
+            </md-input-container>
+            <md-button type ="submit" class="md-primary" ng-click="vm.saveEditListing()" ng-disabled = "editForm.$invalid">Save Edit</md-button>
+            <md-button class="md-warn" ng-click="vm.closeSidebar()">Cancel</md-button>
+        </form>
+    </md-content>
+</md-sidenav>
