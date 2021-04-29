@@ -3,15 +3,29 @@
     "use strict";
     // only a reference to module, creation is already done.
     angular.module("eCommerce")
-           .controller("eCommerceCtrl",function($scope,eCommerceFactory,$mdSidenav,$mdToast,$mdDialog){
+           .controller("eCommerceCtrl",function(eCommerceFactory,$mdSidenav,$mdToast,$mdDialog){
+            
+            var vm =this;
+            
+            vm.openSidebar = openSidebar;
+            vm.closeSidebar = closeSidebar;
+            vm.saveListing = saveListing;
+            vm.saveEditListing = saveEditListing;
+            vm.editListing = editListing;
+            vm.deleteListing = deleteListing;
+
+            vm.listings;
+            vm.categories;
+            vm.editing;
+
 
             // Fake API call from a local JSON for handling asynchronus calls in JavaScript through Promises
             // Using eCommerceFactory service for making this API call reusable and can be altered as required in diff components
             eCommerceFactory.getListings().then(function(listings){
-                $scope.listings = listings.data;
+                vm.listings = listings.data;
 
                 //For giving the dropdown to filter according to the category
-                $scope.categories = getCategories($scope.listings);
+                vm.categories = getCategories(vm.listings);
             });
 
             // Faking contact details for the user adding the listing
@@ -23,40 +37,40 @@
 
 
 
-            $scope.openSidebar = function(){
+            function openSidebar(){
                 $mdSidenav('left').open();
             }
 
-            $scope.closeSidebar = function(){
+            function closeSidebar(){
                 $mdSidenav('left').close();
             }
 
-            $scope.saveListing = function(listing){
+            function saveListing(listing){
                 if(listing){
                     listing.contact = contact;
                     // here 'listing is what user inputs'
-                    $scope.listings.push(listing);
-                    $scope.listing = {};
-                    $scope.closeSidebar();   
+                    vm.listings.push(listing);
+                    vm.listing = {};
+                    closeSidebar();   
                     showToast("Listing Saved!");
                 }
             }
 
-            $scope.saveEditListing = function(){
-                $scope.editing = false;
-                $scope.listing = {};
-                $scope.closeSidebar();
+            function saveEditListing(){
+                vm.editing = false;
+                $vm.listing = {};
+                closeSidebar();
                 showToast("Listing Edited!");
             }
 
             // Here 'listing' is for fetching current data in form, kept same to be generic
-            $scope.editListing = function(listing){
-                $scope.editing = true;
-                $scope.openSidebar();
-                $scope.listing = listing;
+            function editListing(listing){
+                vm.editing = true;
+                openSidebar();
+                vm.listing = listing;
             }
 
-            $scope.deleteListing = function(listing, event){
+            function deleteListing(listing, event){
                 var confirm = $mdDialog.confirm()
                       .title('Are you sure you want to delete' + listing.title + '?')
                       .targetEvent(event)
@@ -64,8 +78,8 @@
                       .cancel('No');
                       // Including a promise which waits for user response 'Yes' or 'No
                 $mdDialog.show(confirm).then(function(){
-                    var index = $scope.listings.indexOf(listing);
-                    $scope.listings.splice(index, 1);
+                    var index = vm.listings.indexOf(listing);
+                    vm.listings.splice(index, 1);
                 }, function(){
 
                 });
