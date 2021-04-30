@@ -1,5 +1,5 @@
-angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination","ui.router","ngMessages"])
-       .config(function($mdThemingProvider, $stateProvider){
+var app = angular.module("eCommerce",['ngMaterial',"angularUtils.directives.dirPagination","ui.router","ngMessages"])
+      app.config(function($mdThemingProvider, $stateProvider){
             $mdThemingProvider.theme('default')
                                 .primaryPalette('indigo')
                                 .accentPalette('orange');
@@ -9,17 +9,17 @@ angular.module("eCommerce",["ngMaterial","angularUtils.directives.dirPagination"
             $stateProvider
                 .state('listings',{
                     url: '/listings',
-                    templateUrl: 'components/listings/listings.tpl.html',
+                    templateUrl: 'app/listings/listings.tpl.html',
                     controller: 'eCommerceCtrl as vm'
                 })
                 .state('listings.new',{
                     url:'/new',
-                    templateUrl: 'components/new/listings.new.tpl.html',
+                    templateUrl: 'app/new/listings.new.tpl.html',
                     controller: 'newListingsCtrl as vm'
                 })
                 .state('listings.edit',{
                     url:'/edit/:id',
-                    templateUrl: 'components/edit/listings.edit.tpl.html',
+                    templateUrl: 'app/edit/listings.edit.tpl.html',
                     controller: 'editListingsCtrl as vm',
                     params: {
                         listing: null

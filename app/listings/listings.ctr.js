@@ -2,19 +2,16 @@
 
     "use strict";
     // only a reference to module, creation is already done.
-    angular.module("eCommerce")
-           .controller("eCommerceCtrl",function($scope, eCommerceFactory, $state, $mdSidenav, $mdToast, $mdDialog){
+        app.controller("eCommerceCtrl",function($scope, eCommerceFactory, $state, $mdToast, $mdDialog){
             
             var vm =this;
             
             vm.openSidebar = openSidebar;
-            vm.closeSidebar = closeSidebar;
             vm.editListing = editListing;
             vm.deleteListing = deleteListing;
 
             vm.listings;
             vm.categories;
-
             // Fake API call from a local JSON for handling asynchronus calls in JavaScript through Promises
             // Using eCommerceFactory service for making this API call reusable and can be altered as required in diff components
             eCommerceFactory.getListings().then(function(listings){
@@ -38,10 +35,6 @@
 
             function openSidebar(){
                 $state.go('listings.new');
-            }
-
-            function closeSidebar(){
-                $mdSidenav('left').close();
             }
 
             // Here 'listing' is for fetching current data in form, kept same to be generic

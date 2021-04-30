@@ -2,8 +2,8 @@
 
     "use strict"
 
-    angular.module('eCommerce')
-           .controller('newListingsCtrl', function($mdSidenav, $timeout, $scope, $state, eCommerceFactory){
+    // angular.module('eCommerce')
+        app.controller('newListingsCtrl', function($mdSidenav, $timeout, $scope, $state){
 
             var vm =this;
 

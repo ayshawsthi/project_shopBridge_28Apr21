@@ -1,8 +1,8 @@
 (function(){
     "use strict";
 
-    angular.module("eCommerce")
-           .factory("eCommerceFactory", function($http){
+    // angular.module("eCommerce")
+        app.factory("eCommerceFactory", function($http){
 
             function getListings(){
                 return $http.get('data/listings.json');
